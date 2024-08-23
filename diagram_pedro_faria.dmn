@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="Definitions_0lzr51c" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.26.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.21.0">
+  <decision id="Decision_08aaiam" name="Decisão 1: Necessidade de aprovação">
+    <informationRequirement id="InformationRequirement_0zxt4jz">
+      <requiredInput href="#InputData_1jzxe4i" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1yqc0i7">
+      <requiredInput href="#InputData_1i4h37x" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1gomglg">
+      <requiredInput href="#InputData_1vct98j" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0hdqjs8" hitPolicy="FIRST">
+      <input id="Input_1" label="Valor do Pedido ">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text>assert(value, condition)</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1v3bxna" label="Prazo de pagamento ">
+        <inputExpression id="LiteralExpression_0twlf4r" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1fsbi6b" label="Desconto oferecido ">
+        <inputExpression id="LiteralExpression_1rz0w49" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label="Necessidade de Aprovação" typeRef="boolean" />
+      <rule id="DecisionRule_1225bv0">
+        <inputEntry id="UnaryTests_151jhk1">
+          <text>valorPedido &gt; 50000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0yjvwml">
+          <text>prazoPagamento &gt; 30</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nmjvoe">
+          <text>descontoOferecido &gt; limiteDesconto</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_06i5qdp">
+          <text>necessidadeAprovacao== true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1mmy54i">
+        <inputEntry id="UnaryTests_0w4qhb9">
+          <text>valorPedido &lt;= 50000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0s8yzj3">
+          <text>prazoPagamento &lt;= 30</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1tvoelx">
+          <text>descontoOferecido &lt;= limiteDesconto</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1uoa99s">
+          <text>necessidadeAprovacao == false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1184zik">
+        <inputEntry id="UnaryTests_0m7jpa8">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17vryv7">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_13b9swi">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0z42nft">
+          <text></text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_1i4h37x" name="Prazo de pagamento" />
+  <inputData id="InputData_1jzxe4i" name="Valor do pedido" />
+  <inputData id="InputData_1vct98j" name="Limite de desconto" />
+  <decision id="Decision_15ja3hz" name="Decisão 2: Validação pedido de vendas">
+    <informationRequirement id="InformationRequirement_0m9slza">
+      <requiredInput href="#InputData_03gj7lu" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1yilubu" hitPolicy="FIRST">
+      <input id="InputClause_01242mz" label="Informações do Pedido ">
+        <inputExpression id="LiteralExpression_0y5csy5" typeRef="string" />
+      </input>
+      <output id="OutputClause_0bd3peq" label="Ação " typeRef="string" />
+      <rule id="DecisionRule_1xjh6v5">
+        <inputEntry id="UnaryTests_0veiqb0">
+          <text>Informações do Pedido == "Completas"	</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0gjdtd5">
+          <text>Pedido Validado == true
+</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0feccoa">
+        <inputEntry id="UnaryTests_00vxfeg">
+          <text>Informações do Pedido != "Completas"	</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_13rtzlv">
+          <text>Pedido Validado == false
+</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_1e5whx4" name="Decisão 4: Renovação automática de certificados">
+    <informationRequirement id="InformationRequirement_0z5ptsx">
+      <requiredInput href="#InputData_1tl4k82" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0lszn6e" hitPolicy="FIRST">
+      <input id="InputClause_1p302d6" label="Status do Certificado ">
+        <inputExpression id="LiteralExpression_0opbvmt" typeRef="string" />
+      </input>
+      <input id="InputClause_0gaxz9g" label="Dias para Vencimento ">
+        <inputExpression id="LiteralExpression_1v4xopp" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_120xam3" label="Ação" typeRef="string" />
+      <rule id="DecisionRule_048q7zw">
+        <inputEntry id="UnaryTests_1auu989">
+          <text>Status do Certificado == "Perto do Vencimento"	</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_00rccuh">
+          <text>Dias para Vencimento &lt;= 90	</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_195u5ir">
+          <text>Gerar Alerta de Renovação == true
+</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0bp5x0e">
+        <inputEntry id="UnaryTests_052xu4o">
+          <text>Status do Certificado == "Vencido"	</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07ga1ns">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0zce04k">
+          <text>Bloquear Pedido == true
+</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_19b0bgn" name="Decisão 3: Coordenação logística">
+    <informationRequirement id="InformationRequirement_02q6kvc">
+      <requiredDecision href="#Decision_08aaiam" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1wl21w5" hitPolicy="FIRST">
+      <input id="InputClause_1ym645r" label="Necessidade de Aprovação ">
+        <inputExpression id="LiteralExpression_012zdr4" typeRef="string" />
+      </input>
+      <input id="InputClause_09tmrda" label="Pedido Validado ">
+        <inputExpression id="LiteralExpression_0k09cmk" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1k70da9" label="Ação" typeRef="string" />
+      <rule id="DecisionRule_0jfof7a">
+        <inputEntry id="UnaryTests_1q7lqnw">
+          <text>Necessidade de Aprovação == true	</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0mvovxd">
+          <text>Pedido Validado == true	</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0psj0s8">
+          <text>Iniciar Coordenação Logística == true
+</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_117dmj8">
+        <inputEntry id="UnaryTests_1i6fp3k">
+          <text>Necessidade de Aprovação == false	</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10bhsir">
+          <text>Pedido Validado == true	</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1l8xsx5">
+          <text>Iniciar Coordenação Logística == true
+</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_11xs2k7">
+        <inputEntry id="UnaryTests_0891t3j">
+          <text>Pedido Validado == false	</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_111jqjp">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0l1sg4t">
+          <text>Iniciar Coordenação Logística == false
+</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_03gj7lu" name="Informações do pedido" />
+  <inputData id="InputData_1tl4k82" name="Status de certificado" />
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Decision_08aaiam">
+        <dc:Bounds height="80" width="180" x="230" y="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1a8br1s" dmnElementRef="InputData_1i4h37x">
+        <dc:Bounds height="45" width="125" x="197" y="207" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0rjs44j" dmnElementRef="InputData_1jzxe4i">
+        <dc:Bounds height="45" width="125" x="47" y="97" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1f6v1qp" dmnElementRef="InputData_1vct98j">
+        <dc:Bounds height="45" width="125" x="257" y="-43" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_13de28m" dmnElementRef="Decision_15ja3hz">
+        <dc:Bounds height="80" width="180" x="230" y="310" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1ewae9a" dmnElementRef="Decision_1e5whx4">
+        <dc:Bounds height="80" width="180" x="520" y="310" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1yo3xlb" dmnElementRef="Decision_19b0bgn">
+        <dc:Bounds height="80" width="180" x="520" y="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_19xv1lo" dmnElementRef="InformationRequirement_0zxt4jz">
+        <di:waypoint x="172" y="120" />
+        <di:waypoint x="210" y="120" />
+        <di:waypoint x="230" y="120" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_14e2jmc" dmnElementRef="InformationRequirement_1yqc0i7">
+        <di:waypoint x="260" y="207" />
+        <di:waypoint x="320" y="180" />
+        <di:waypoint x="320" y="160" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_097msjp" dmnElementRef="InformationRequirement_1gomglg">
+        <di:waypoint x="320" y="2" />
+        <di:waypoint x="320" y="60" />
+        <di:waypoint x="320" y="80" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0zcdsi8" dmnElementRef="InputData_03gj7lu">
+        <dc:Bounds height="45" width="125" x="47" y="327" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0hknu5y" dmnElementRef="InformationRequirement_0m9slza">
+        <di:waypoint x="172" y="350" />
+        <di:waypoint x="210" y="350" />
+        <di:waypoint x="230" y="350" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0v96c8i" dmnElementRef="InputData_1tl4k82">
+        <dc:Bounds height="45" width="125" x="547" y="448" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_026ao1f" dmnElementRef="InformationRequirement_0z5ptsx">
+        <di:waypoint x="610" y="448" />
+        <di:waypoint x="610" y="410" />
+        <di:waypoint x="610" y="390" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1rejlhv" dmnElementRef="InformationRequirement_02q6kvc">
+        <di:waypoint x="410" y="120" />
+        <di:waypoint x="500" y="120" />
+        <di:waypoint x="520" y="120" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
