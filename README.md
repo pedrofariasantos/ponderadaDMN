@@ -1,1 +1,9 @@
 # ponderadaDMN
+
+| Nº    | Descrição                                      | Critério de Aplicação                                                                            | Ações                                                    | Área Responsável              |
+|-------|------------------------------------------------|-------------------------------------------------------------------------------------------------|----------------------------------------------------------|--------------------------------|
+| VE001 | Qualificação de Leads                          | Leads que atendem a critérios como tamanho da empresa, setor de atuação, e histórico de interações anteriores. | Classificar leads como "qualificados" e encaminhá-los para a equipe de vendas. | Marketing/Vendas               |
+| VE002 | Aprovação de Termos de Venda                   | Termos de venda (preço, prazo e condições) fora dos limites das políticas comerciais da empresa.  | Enviar o pedido para aprovação manual pelo gerente de vendas. | Vendas/Gerência                |
+| VE003 | Coordenação Logística para Entrega de Software | Venda concluída e pedido registrado no SAP Business One.                                         | Gerar ordens de serviço, coordenar a entrega e confirmar o recebimento pelo cliente. | Logística/Suporte               |
+| VE004 | Validação de Pedidos de Licenças               | Recebimento de pedidos de compra de licenças SAP.                                                | Validar informações do pedido e bloquear o processamento até correção, se necessário. | Vendas/Suporte                  |
+| VE005 | Renovação Automática de Certificados           | Certificados SAP próximos do vencimento (90 dias antes).                                         | Gerar alertas de renovação e sugerir pacotes de renovação com condições especiais. | Vendas/Suporte Técnico          |
